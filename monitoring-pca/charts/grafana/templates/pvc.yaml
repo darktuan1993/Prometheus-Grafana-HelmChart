@@ -28,9 +28,7 @@ spec:
   {{- if and (.Values.persistence.lookupVolumeName) (lookup "v1" "PersistentVolumeClaim" (include "grafana.namespace" .) (include "grafana.fullname" .)) }}
   volumeName: {{ (lookup "v1" "PersistentVolumeClaim" (include "grafana.namespace" .) (include "grafana.fullname" .)).spec.volumeName }}
   {{- end }}
-  {{- with .Values.persistence.storageClassName }}
-  storageClassName: {{ . }}
-  {{- end }}
+  storageClassName: nfs-csi-synology
   {{- with .Values.persistence.selectorLabels }}
   selector:
     matchLabels:
