@@ -1,4 +1,4 @@
-{{- if and (not .Values.useStatefulSet) .Values.persistence.enabled (not .Values.persistence.existingClaim) (eq .Values.persistence.type "pvc")}}
+{{- if and (not .Values.useStatefulSet) .Values.persistence.enabled (not .Values.persistence.existingClaim) (eq .Values.persistence.type "pvc") }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -9,14 +9,14 @@ metadata:
     {{- with .Values.persistence.extraPvcLabels }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
-  {{- with .Values.persistence.annotations  }}
   annotations:
+    {{- with .Values.persistence.annotations  }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
-  {{- with .Values.persistence.finalizers  }}
+    {{- end }}
   finalizers:
+    {{- with .Values.persistence.finalizers  }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
   accessModes:
     {{- range .Values.persistence.accessModes }}
@@ -28,10 +28,10 @@ spec:
   {{- if and (.Values.persistence.lookupVolumeName) (lookup "v1" "PersistentVolumeClaim" (include "grafana.namespace" .) (include "grafana.fullname" .)) }}
   volumeName: {{ (lookup "v1" "PersistentVolumeClaim" (include "grafana.namespace" .) (include "grafana.fullname" .)).spec.volumeName }}
   {{- end }}
-  storageClassName: nfs-csi-synology
-  {{- with .Values.persistence.selectorLabels }}
+  storageClassName: {{ .Values.persistence.storageClassName | default "nfs-csi-synology" }}
   selector:
+    {{- with .Values.persistence.selectorLabels }}
     matchLabels:
-    {{- toYaml . | nindent 6 }}
-  {{- end }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
 {{- end }}
