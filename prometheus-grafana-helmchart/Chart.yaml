@@ -7,10 +7,11 @@ appVersion: "1.16.0"
 dependencies:
   - name: grafana
     version: "0.1.0"
-    repository: "file://charts/grafana"
+    repository: "file://./charts/grafana"
   - name: grafana2
     version: "0.1.0"
-    repository: "file://charts/grafana_copy"    
+    repository: "file://./charts/grafana_copy"
+
 
 
 
