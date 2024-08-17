@@ -1,9 +1,0 @@
-dependencies:
-- name: grafana
-  repository: file://./charts/grafana
-  version: 0.1.0
-- name: grafana2
-  repository: file://./charts/grafana_copy
-  version: 0.1.0
-digest: sha256:f6501eb25d719dd061f5a61eb00b57df05a749bb20fbe46f14840e5624686e2e
-generated: "2024-08-17T14:44:37.0180827+07:00"
