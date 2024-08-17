@@ -371,7 +371,7 @@ extraContainerVolumes: []
 persistence:
   type: pvc
   enabled: false
-  # storageClassName: default
+  storageClassName: nfs-csi-synology
   accessModes:
     - ReadWriteOnce
   size: 10Gi
