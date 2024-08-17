@@ -375,10 +375,10 @@ persistence:
   accessModes:
     - ReadWriteOnce
   size: 10Gi
-  # annotations: {}
+  annotations: {}
   finalizers:
     - kubernetes.io/pvc-protection
-  # selectorLabels: {}
+  selectorLabels: {}
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
