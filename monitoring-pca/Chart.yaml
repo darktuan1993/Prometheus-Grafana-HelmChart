@@ -1,6 +1,6 @@
 apiVersion: v2
 name: monitoring-pca
-description: A Helm chart for Kubernetes
+description: Ứng dụng Prometheus-Grafana giám sát nộ bộ
 type: application
 version: 0.1.0
 appVersion: "1.16.0"
