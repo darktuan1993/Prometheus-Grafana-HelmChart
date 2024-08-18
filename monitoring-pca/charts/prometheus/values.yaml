@@ -34,4 +34,9 @@ prometheus:
         static_configs:
           - targets:
               - 'kube-state-metrics.metrics-system.svc.cluster.local:8080'
-              - 'node-exporter-prometheus-node-exporter.metrics-system.svc.cluster.local:9100'
+              - '192.168.3.7:9100'
+              - '192.168.3.8:9100'
+              - '192.168.3.9:9100'
+              - '192.168.3.11:9100'
+              - '192.168.3.12:9100'
+              - '192.168.3.13:9100'
