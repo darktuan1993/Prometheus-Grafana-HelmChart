@@ -31,8 +31,9 @@ prometheus:
         static_configs:
           - targets: ['localhost:9090']
       - job_name: 'kube-state-metrics'
+        metrics_path: /metrics
         static_configs:
-          - targets: ['kube-state-metrics.metrics-system.svc.cluster.local:8080']  
+          - targets: ['kube-state-metrics.metrics-system.svc.cluster.local:8080']
 
 secret:
   enabled: true
