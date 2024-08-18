@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: grafana-configmap
-data:
-  grafana.ini: |-
-    {{- toYaml .Values.grafana.ini | nindent 4 }}
