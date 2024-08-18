@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana
-   labels:
+  name: {{ include "grafana.fullname" . }}
+  labels:
     app: {{ include "grafana.name" . }} 
 spec:
   replicas: {{ .Values.replicaCount }}
