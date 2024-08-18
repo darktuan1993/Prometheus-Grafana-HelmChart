@@ -20,7 +20,7 @@ ingress:
 persistence:
   enabled: true
   size: 10Gi
-  storageClass: ""
+  storageClassName: nfs-csi-synology
 
 resources: {}
 
