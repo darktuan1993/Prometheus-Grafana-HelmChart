@@ -40,6 +40,9 @@ spec:
               mountPath: {{ .Values.persistence.mountPath }}
             - name: grafana-logs
               mountPath: {{ .Values.persistence.logsPath }}
+            - name: config-volume
+              mountPath: /etc/grafana/grafana.ini
+              subPath: grafana.ini
       securityContext:
         fsGroup: 472
         runAsGroup: 472
