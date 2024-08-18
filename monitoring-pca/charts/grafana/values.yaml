@@ -100,7 +100,7 @@ image:
   # -- Docker image repository
   repository: grafana/grafana
   # Overrides the Grafana image tag whose default is the chart appVersion
-  tag: "latest"
+  tag: ""
   sha: ""
   pullPolicy: IfNotPresent
 
@@ -371,14 +371,14 @@ extraContainerVolumes: []
 persistence:
   type: pvc
   enabled: false
-  storageClassName: 
+  # storageClassName: default
   accessModes:
     - ReadWriteOnce
   size: 10Gi
-  annotations: {}
+  # annotations: {}
   finalizers:
     - kubernetes.io/pvc-protection
-  selectorLabels: {}
+  # selectorLabels: {}
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
