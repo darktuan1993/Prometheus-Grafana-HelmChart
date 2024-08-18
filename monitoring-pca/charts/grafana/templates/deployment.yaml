@@ -12,6 +12,13 @@ spec:
       labels:
         app: grafana
     spec:
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ["sh", "-c", "chown -R 472:472 /var/lib/grafana"]
+          volumeMounts:
+            - name: grafana-storage
+              mountPath: /var/lib/grafana
       containers:
         - name: grafana
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -28,15 +35,23 @@ spec:
                 secretKeyRef:
                   name: grafana-secret
                   key: admin-password
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            seccompProfile:
+              type: RuntimeDefault                  
           volumeMounts:
             - name: grafana-storage
               mountPath: {{ .Values.persistence.mountPath }}
             - name: grafana-logs
               mountPath: {{ .Values.persistence.logsPath }}
-          securityContext:
-            runAsUser: 472       # ID người dùng của Grafana (thường là 472 cho Grafana)
-            runAsGroup: 472      # ID nhóm của Grafana (thường là 472 cho Grafana)
-            fsGroup: 472         # Thiết lập nhóm file system
+      securityContext:
+        fsGroup: 472
+        runAsGroup: 472
+        runAsNonRoot: true
+        runAsUser: 472
       volumes:
         - name: grafana-storage
           persistentVolumeClaim:
