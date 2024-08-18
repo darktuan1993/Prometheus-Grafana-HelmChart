@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: CluterIP
+  type: ClusterIP
   port: 80
 
 grafana:
