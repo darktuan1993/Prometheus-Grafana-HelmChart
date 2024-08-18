@@ -20,8 +20,8 @@ spec:
           ports:
             - containerPort: 9090
           volumeMounts:
-            # - name: prometheus-config
-            #   mountPath: /etc/prometheus/
+            - name: prometheus-config
+              mountPath: /etc/prometheus/
             - name: prometheus-data
               mountPath: /prometheus
       securityContext:
@@ -32,9 +32,9 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       volumes:
-        # - name: prometheus-config
-        #   configMap:
-        #     name: {{ include "prometheus.fullname" . }}-config
+        - name: prometheus-config
+          configMap:
+            name: {{ include "prometheus.fullname" . }}-config
         - name: prometheus-data
           persistentVolumeClaim:
             claimName: {{ include "prometheus.fullname" . }}-pvc
