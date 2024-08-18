@@ -1,8 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana-ingress
-  namespace: bravo-monitor
+  name: {{ include "grafana.fullname" . }}-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
     alb.ingress.kubernetes.io/ssl-passthrough: "true"
@@ -18,6 +17,6 @@ spec:
         path: /
         backend:
           service:
-            name: grafana
+            name: {{ include "grafana.fullname" . }}
             port:
               number: 80
