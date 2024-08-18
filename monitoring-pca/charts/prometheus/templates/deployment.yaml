@@ -14,8 +14,6 @@ spec:
       labels:
         app: {{ include "prometheus.name" . }}
     spec:
-      securityContext:
-        fsGroup: 65534 # Thêm fsGroup để đảm bảo quyền ghi trên thư mục được gắn kết
       containers:
         - name: prometheus
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
