@@ -26,10 +26,14 @@ spec:
               mountPath: /etc/prometheus/
             - name: prometheus-data
               mountPath: /prometheus
-          securityContext:
-            runAsUser: 65534 # Đảm bảo Prometheus chạy với user không phải root có quyền phù hợp
-            runAsGroup: 65534 # Đảm bảo group phù hợp cho quyền truy cập
-            fsGroup: 65534 # Đảm bảo quyền trên các tệp và thư mục được gắn kết
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: release-n
       volumes:
         - name: config-volume
           configMap:
