@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: 9090
           volumeMounts:
-            - name: config-volume
+            - name: prometheus-config
               mountPath: /etc/prometheus/
             - name: prometheus-data
               mountPath: /prometheus
@@ -32,7 +32,7 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       volumes:
-        - name: config-volume
+        - name: prometheus-config
           configMap:
             name: {{ include "prometheus.fullname" . }}-config
         - name: prometheus-data

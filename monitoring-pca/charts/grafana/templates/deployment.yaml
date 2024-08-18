@@ -2,15 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana
+   labels:
+    app: {{ include "grafana.name" . }} 
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: grafana
+      app: {{ include "grafana.name" . }}
   template:
     metadata:
       labels:
-        app: grafana
+        app: {{ include "grafana.name" . }}
     spec:
       containers:
         - name: grafana
@@ -51,10 +53,10 @@ spec:
       volumes:
         - name: grafana-storage
           persistentVolumeClaim:
-            claimName: grafana-pvc
+            claimName: {{ include "grafana.fullname" . }}-pvc
         - name: grafana-logs
           persistentVolumeClaim:
-            claimName: grafana-logs-pvc
+            claimName: {{ include "grafana.fullname" . }}-logs-pvc
         - name: grafana-config
           configMap:
-            name: grafana-configmap
+            name: {{ include "grafana.fullname" . }}-config

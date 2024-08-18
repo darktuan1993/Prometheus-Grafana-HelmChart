@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-configmap
+  name: {{ include "grafana.fullname" . }}-config
+  labels:
+    app: {{ include "grafana.name" . }}
 data:
   grafana.ini: |-
     {{- with .Values.grafana.ini }}
