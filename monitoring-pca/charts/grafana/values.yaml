@@ -25,7 +25,7 @@ persistence:
     - ReadWriteMany
   size: 10Gi
   logSize: 2Gi
-  storageClassName: "nfs-csi-synology" # Thay thế bằng StorageClass mà bạn muốn sử dụng
+  storageClassName: nfs-csi-synology # Thay thế bằng StorageClass mà bạn muốn sử dụng
   mountPath: /var/lib/grafana
   logsPath: /var/log/grafana
 
