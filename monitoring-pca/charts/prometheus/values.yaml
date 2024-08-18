@@ -29,8 +29,9 @@ prometheus:
     global:
       scrape_interval: 15s
     scrape_configs:
-      - job_name: 'kubernetes-manager-metrics'
+      - job_name: 'kubernetes-managerment-cluster'
         metrics_path: /metrics
         static_configs:
           - targets:
               - 'kube-state-metrics.metrics-system.svc.cluster.local:8080'
+              - 'node-exporter-prometheus-node-exporter.metrics-system.svc.cluster.local:9100'
