@@ -31,7 +31,6 @@ spec:
         runAsUser: 65534
         seccompProfile:
           type: RuntimeDefault
-      serviceAccountName: release-n
       volumes:
         - name: config-volume
           configMap:
