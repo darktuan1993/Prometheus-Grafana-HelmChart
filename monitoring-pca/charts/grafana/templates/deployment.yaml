@@ -12,16 +12,6 @@ spec:
       labels:
         app: grafana
     spec:
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          command: ["sh", "-c", "chown -R 472:472 /var/lib/grafana"]
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 472
-          volumeMounts:
-            - name: grafana-storage
-              mountPath: /var/lib/grafana
       containers:
         - name: grafana
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
