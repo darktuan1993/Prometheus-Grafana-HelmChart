@@ -32,7 +32,7 @@ grafana:
     users:
       default_theme: dark
     auth:
-      disable_login_form: true
+      disable_login_form: false
     security:
       allow_embedding: true
     paths:
