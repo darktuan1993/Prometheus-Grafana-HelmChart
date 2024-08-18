@@ -1,0 +1,5 @@
+apiVersion: v2
+name: prometheus-helmchart
+description: A Helm chart for deploying Prometheus with custom configuration.
+version: 0.1.0
+appVersion: "2.29.2"
