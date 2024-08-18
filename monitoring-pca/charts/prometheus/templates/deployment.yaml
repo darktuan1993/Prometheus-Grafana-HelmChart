@@ -14,6 +14,8 @@ spec:
       labels:
         app: {{ include "prometheus.name" . }}
     spec:
+      securityContext:
+        fsGroup: 65534 # Thêm fsGroup để đảm bảo quyền ghi trên thư mục được gắn kết
       containers:
         - name: prometheus
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -24,6 +26,10 @@ spec:
               mountPath: /etc/prometheus/
             - name: prometheus-data
               mountPath: /prometheus
+          securityContext:
+            runAsUser: 65534 # Đảm bảo Prometheus chạy với user không phải root có quyền phù hợp
+            runAsGroup: 65534 # Đảm bảo group phù hợp cho quyền truy cập
+            fsGroup: 65534 # Đảm bảo quyền trên các tệp và thư mục được gắn kết
       volumes:
         - name: config-volume
           configMap:
