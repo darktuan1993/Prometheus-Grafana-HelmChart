@@ -13,7 +13,7 @@ ingress:
   enabled: true
   annotations: {}
   hosts:
-    - host: m-prometheus.bravo.com.vn
+    - host: prometheus.local
       paths: ["/"]
   tls: []
 
@@ -23,3 +23,7 @@ persistence:
   storageClass: ""
 
 resources: {}
+
+secret:
+  enabled: true
+  adminPassword: "admin"

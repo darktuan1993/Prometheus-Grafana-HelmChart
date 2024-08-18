@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: prometheus-pvc
+  name: {{ include "prometheus.fullname" . }}-pvc
   labels:
-    app: prometheus
+    app: {{ include "prometheus.name" . }}
 spec:
   accessModes:
     - ReadWriteOnce

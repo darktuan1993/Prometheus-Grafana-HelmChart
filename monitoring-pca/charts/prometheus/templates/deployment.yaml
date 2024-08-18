@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prometheus
+  name: {{ include "prometheus.fullname" . }}
   labels:
-    app: prometheus
+    app: {{ include "prometheus.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: prometheus
+      app: {{ include "prometheus.name" . }}
   template:
     metadata:
       labels:
-        app: prometheus
+        app: {{ include "prometheus.name" . }}
     spec:
       containers:
         - name: prometheus
@@ -27,7 +27,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: prometheus-config
+            name: {{ include "prometheus.fullname" . }}-config
         - name: prometheus-data
           persistentVolumeClaim:
-            claimName: prometheus-pvc
+            claimName: {{ include "prometheus.fullname" . }}-pvc
