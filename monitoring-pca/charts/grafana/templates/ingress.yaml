@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: grafana.bravo.com.vn
+  - host: m-grafana.bravo.com.vn
     http:
       paths:
       - pathType: Prefix
