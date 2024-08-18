@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: grafana/grafana
+  tag: "9.2.2"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+grafana:
+  ini:
+    server:
+      root_url: http://localhost
+      serve_from_sub_path: true
+    users:
+      default_theme: dark
+    auth:
+      disable_login_form: false
+
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  mountPath: /var/lib/grafana
+  logsPath: /var/log/grafana
+  logSize: 2Gi
+
+adminUser: admin
+adminPassword: admin123
