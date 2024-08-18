@@ -4,4 +4,11 @@ metadata:
   name: grafana-configmap
 data:
   grafana.ini: |-
-    {{- toYaml .Values.grafana.ini | nindent 4 }}
+    {{- with .Values.grafana.ini }}
+    {{- range $section, $settings := . }}
+    [{{ $section }}]
+    {{- range $key, $value := $settings }}
+    {{ $key }} = {{ $value | quote }}
+    {{- end }}
+    {{- end }}
+    {{- end }}

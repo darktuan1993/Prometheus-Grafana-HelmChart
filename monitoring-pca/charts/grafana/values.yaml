@@ -9,17 +9,6 @@ service:
   type: ClusterIP
   port: 80
 
-grafana:
-  ini:
-    server:
-      root_url: http://localhost
-      serve_from_sub_path: true
-    users:
-      default_theme: dark
-    auth:
-      disable_login_form: false
-    security:
-      allow_embedding: true
 persistence:
   enabled: true
   accessModes:
@@ -31,3 +20,23 @@ persistence:
   logsPath: /var/log/grafana
 
 adminUser: admin
+
+# Grafana Config
+grafana:
+  ini:
+    analytics:
+      check_for_updates: false
+    server:
+      root_url: https://m-grafana.bravo.com.vn/
+      serve_from_sub_path: true
+    users:
+      default_theme: dark
+    auth:
+      disable_login_form: true
+    security:
+      allow_embedding: true
+    paths:
+      data: /var/lib/grafana/
+      logs: /var/log/grafana
+      plugins: /var/lib/grafana/plugins
+      provisioning: /etc/grafana/provisioning
