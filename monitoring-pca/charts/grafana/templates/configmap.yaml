@@ -1,20 +1,7 @@
-{{- if .Values.createConfigmap }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "grafana.fullname" . }}
-  namespace: {{ include "grafana.namespace" . }}
-  labels:
-    {{- include "grafana.labels" . | nindent 4 }}
-  {{- if or .Values.configMapAnnotations .Values.annotations }}
-  annotations:
-    {{- with .Values.annotations }}
-      {{- toYaml . | nindent 4 }}
-    {{- end }}
-    {{- with .Values.configMapAnnotations }}
-      {{- toYaml . | nindent 4 }}
-    {{- end }}
-  {{- end }}
+  name: grafana-configmap
 data:
-  {{- include "grafana.configData" . | nindent 2 }}
-{{- end }}
+  grafana.ini: |-
+    {{- toYaml .Values.grafana.ini | nindent 4 }}
