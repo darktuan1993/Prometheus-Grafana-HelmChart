@@ -1,4 +1,3 @@
-# templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,6 +33,10 @@ spec:
               mountPath: {{ .Values.persistence.mountPath }}
             - name: grafana-logs
               mountPath: {{ .Values.persistence.logsPath }}
+          securityContext:
+            runAsUser: 472       # ID người dùng của Grafana (thường là 472 cho Grafana)
+            runAsGroup: 472      # ID nhóm của Grafana (thường là 472 cho Grafana)
+            fsGroup: 472         # Thiết lập nhóm file system
       volumes:
         - name: grafana-storage
           persistentVolumeClaim:
