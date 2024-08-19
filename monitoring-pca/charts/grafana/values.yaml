@@ -40,3 +40,5 @@ grafana:
       logs: /var/log/grafana
       plugins: /var/lib/grafana/plugins
       provisioning: /etc/grafana/provisioning
+    auth.anonymous:
+      enabled: true
