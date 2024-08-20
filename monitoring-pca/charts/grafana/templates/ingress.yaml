@@ -27,7 +27,7 @@ metadata:
   namespace: bravo-monitoring
 spec:
   selector:
-    istio: {{ include "grafana.fullname" . }}
+    istio: ingressgateway
   servers:
     - port:
         number: 80
