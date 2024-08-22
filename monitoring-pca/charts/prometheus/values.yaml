@@ -20,7 +20,7 @@ ingress:
 persistence:
   enabled: true
   size: 10Gi
-  storageClassName: nfs-csi-synology
+  storageClassName: nfs-csi-nas
 
 prometheus:
   configTemplate: |-
