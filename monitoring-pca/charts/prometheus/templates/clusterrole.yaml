@@ -1,12 +1,9 @@
-
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: {{ include "prometheus.fullname" . }}
   labels:
     app: {{ include "prometheus.name" . }}
-  annotations:
-    {}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -15,8 +12,7 @@ metadata:
   labels:
     app: {{ include "prometheus.name" . }}
 rules:
-  - apiGroups:
-      - ""
+  - apiGroups: [""]
     resources:
       - nodes
       - nodes/proxy
@@ -24,7 +20,6 @@ rules:
       - services
       - endpoints
       - pods
-      - ingresses
       - configmaps
     verbs:
       - get
@@ -40,16 +35,14 @@ rules:
       - get
       - list
       - watch
-  - apiGroups:
-      - "discovery.k8s.io"
+  - apiGroups: ["discovery.k8s.io"]
     resources:
       - endpointslices
     verbs:
       - get
       - list
       - watch
-  - nonResourceURLs:
-      - "/metrics"
+  - nonResourceURLs: ["/metrics"]
     verbs:
       - get
 ---
@@ -62,6 +55,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: {{ include "prometheus.fullname" . }}
+    namespace: bravo-monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
