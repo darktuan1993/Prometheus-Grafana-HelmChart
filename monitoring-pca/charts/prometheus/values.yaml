@@ -36,6 +36,7 @@ prometheus:
               - localhost:9090
           
       - job_name: kubernetes-apiservers-remote
+        metrics_path: /metrics
         kubernetes_sd_configs:
           - role: endpoints
             api_server: https://192.168.3.10:6443  # Địa chỉ của API server remote
