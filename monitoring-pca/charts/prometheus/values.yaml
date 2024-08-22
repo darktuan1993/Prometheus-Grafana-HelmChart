@@ -36,9 +36,6 @@ prometheus:
         static_configs:
           - targets:
               - '192.168.140.8:32083' 
-        params:
-          'match[]':
-            - '{__name__=~".+"}'
 
       - job_name: 'k8s-management-cluster'
         metrics_path: /metrics
