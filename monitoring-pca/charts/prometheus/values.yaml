@@ -33,7 +33,7 @@ prometheus:
         honor_labels: true
         metrics_path: '/federate'
         static_configs:
-          - targets: 192.168.140.8:32083 # Địa chỉ IP của Prometheus B
+          - targets: 192.168.140.8:32083
 
       - job_name: 'k8s-management-cluster'
         metrics_path: /metrics
