@@ -29,13 +29,10 @@ prometheus:
       scrape_interval: 15s
       scrape_timeout: 10s
 
+    remote_read:
+      - url: "http://192.168.140.18:32645/api/v1/read"
+
     scrape_configs:
-      - job_name: 'prometheus-B'
-        honor_labels: true
-        metrics_path: '/metrics'
-        static_configs:
-          - targets:
-              - '192.168.140.8:32083' 
 
       - job_name: 'k8s-management-cluster'
         metrics_path: /metrics
