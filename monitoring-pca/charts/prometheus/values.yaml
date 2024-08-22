@@ -28,12 +28,14 @@ prometheus:
       evaluation_interval: 1m
       scrape_interval: 15s
       scrape_timeout: 10s
+
     scrape_configs:
       - job_name: 'prometheus-B'
         honor_labels: true
         metrics_path: '/federate'
         static_configs:
-          - targets: 192.168.140.8:32083
+          - targets:
+              - '192.168.140.8:32083' 
 
       - job_name: 'k8s-management-cluster'
         metrics_path: /metrics
@@ -46,7 +48,7 @@ prometheus:
               - '192.168.140.11:9100'
               - '192.168.140.12:9100'
               - '192.168.140.13:9100'
-        
+          
       - job_name: 'k8s-bravoapp-cluster'
         metrics_path: /metrics
         static_configs:
@@ -57,4 +59,5 @@ prometheus:
               - '192.168.140.19:9100'
               - '192.168.140.21:9100'
               - '192.168.140.22:9100'
-              - '192.168.140.23:9100'            
+              - '192.168.140.23:9100'
+
