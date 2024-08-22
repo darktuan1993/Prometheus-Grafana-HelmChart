@@ -70,3 +70,12 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: {{ include "prometheus.fullname" . }}-clusterrole
+
+--- 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "prometheus.fullname" . }}-token
+  annotations:
+     kubernetes.io/service-account.name: {{ include "prometheus.fullname" . }}-sa
+type: kubernetes.io/service-account-token
