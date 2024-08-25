@@ -55,7 +55,7 @@ prometheus:
       - job_name: 'rancher-federate'
         scrape_timeout: 15s
         metrics_path: '/federate'
-        scheme: https
+        scheme: http
         params:
           'match[]':
             - '{__name__=~".+"}'  # Collect all metrics
