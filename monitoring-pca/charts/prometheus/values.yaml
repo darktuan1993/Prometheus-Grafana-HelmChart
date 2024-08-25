@@ -52,21 +52,19 @@ prometheus:
       #         - __meta_kubernetes_endpoint_port_name
       #   scheme: https
 
-      - job_name: rancher-federate
-        scrape_timeout: 30s
-        honor_labels: true
+      - job_name: 'rancher-federate'
+        scrape_timeout: 15s
         metrics_path: '/federate'
         scheme: https
         params:
           'match[]':
-            - '{__name__=~".+"}' # Collect all
+            - '{__name__=~".+"}'  # Collect all metrics
         tls_config:
-          # For simplicity, let's skip SSL verification to focus on the main point of this blog
+          # Skip SSL verification
           insecure_skip_verify: true
         static_configs:
           - targets:
               - '192.168.140.8:32083'
-
 
 
 
