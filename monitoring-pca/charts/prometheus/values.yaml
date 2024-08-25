@@ -46,7 +46,6 @@ prometheus:
             labels:
               cluster_name: cluster-manager-k8s
 
-      # Job cluster -application
       - job_name: 'cluster-application-k8s'
         scrape_timeout: 15s
         metrics_path: '/federate'
