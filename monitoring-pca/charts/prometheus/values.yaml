@@ -52,6 +52,24 @@ prometheus:
       #         - __meta_kubernetes_endpoint_port_name
       #   scheme: https
 
+      - job_name: rancher-federate
+        scrape_timeout: 30s
+        honor_labels: true
+        metrics_path: '/federate'
+        scheme: https
+        params:
+          'match[]':
+            - '{__name__=~".+"}' # Collect all
+        tls_config:
+          # For simplicity, let's skip SSL verification to focus on the main point of this blog
+          insecure_skip_verify: true
+        static_configs:
+          - targets:
+              - '192.168.140.8:32083'
+
+
+
+
       - job_name: 'k8s-management-cluster'
         metrics_path: /metrics
         static_configs:
