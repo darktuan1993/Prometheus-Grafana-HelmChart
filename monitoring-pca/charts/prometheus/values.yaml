@@ -19,7 +19,7 @@ ingress:
 
 persistence:
   enabled: true
-  size: 10Gi
+  size: 50Gi
   storageClassName: nfs-csi-nas
 
 prometheus:
