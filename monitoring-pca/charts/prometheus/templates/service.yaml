@@ -6,7 +6,9 @@ metadata:
     app: {{ include "prometheus.name" . }}
 spec:
   ports:
-    - port: {{ .Values.service.port }}
+    - nodePort: 31843
+      protocol: TCP
+      port: {{ .Values.service.port }}
       targetPort: 9090
   selector:
     app: {{ include "prometheus.name" . }}
