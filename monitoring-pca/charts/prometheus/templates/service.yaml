@@ -6,7 +6,7 @@ metadata:
     app: {{ include "prometheus.name" . }}
 spec:
   ports:
-    - nodePort: 31843
+    - nodePort: 32398
       protocol: TCP
       port: {{ .Values.service.port }}
       targetPort: 9090
