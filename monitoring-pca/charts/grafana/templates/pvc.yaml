@@ -19,7 +19,7 @@ metadata:
   name: {{ include "grafana.fullname" . }}-logs-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: {{ .Values.persistence.storageClassName | quote }}
   resources:
     requests:
