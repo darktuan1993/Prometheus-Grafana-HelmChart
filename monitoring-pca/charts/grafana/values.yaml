@@ -15,7 +15,7 @@ persistence:
     - ReadWriteMany
   size: 10Gi
   logSize: 2Gi
-  storageClassName: nfs-csi-nas
+  storageClassName: nfs-csi-gluster
   mountPath: /var/lib/grafana
   logsPath: /var/log/grafana
 
