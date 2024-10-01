@@ -42,7 +42,7 @@ prometheus:
           # Skip SSL verification
           insecure_skip_verify: true
         static_configs:
-          - targets: [172.16.19.8:32083]
+          - targets: [172.16.19.8:31419]
             labels:
               cluster_name: cluster-manager-k8s
 
