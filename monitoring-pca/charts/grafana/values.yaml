@@ -27,7 +27,7 @@ grafana:
     analytics:
       check_for_updates: false
     server:
-      root_url: https://m-grafana.bravo.com.vn/
+      root_url: https://uat-grafana.bravo.com.vn/
       serve_from_sub_path: true
     users:
       default_theme: dark
