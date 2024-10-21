@@ -49,6 +49,7 @@ spec:
           volumeMounts:
             - name: botalert-config
               mountPath: config.yaml
+              subPath: config.yaml
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
