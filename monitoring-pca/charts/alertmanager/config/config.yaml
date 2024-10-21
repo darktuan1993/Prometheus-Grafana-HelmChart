@@ -16,9 +16,9 @@ receivers:
 route:
   continue: false
   group_by: ['instance']
-  group_interval: 1m
+  group_interval: 10s
   group_wait: 5s
-  repeat_interval: 15m
+  repeat_interval: 1m
   receiver: systems-team-telegram
   routes:
 
@@ -29,7 +29,7 @@ route:
 ##################### SERVER-NODE EXPORTER #######################
 ##################### SERVER-NODE EXPORTER #######################
 
-    # Hệ Thống Y Tế Công Cộng
+    # ClusterManager
     - match:
         app_type: ClusterManager
         instance: 192.168.140.18:32645
