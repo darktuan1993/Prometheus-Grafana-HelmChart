@@ -32,7 +32,7 @@ prometheus:
 
     # Rules config 
     rule_files:
-      - "/etc/rules/kubernetes.yml"
+      - "/etc/prometheus/rules/kubernetes.yml"
     
     alerting:
       alertmanagers:
