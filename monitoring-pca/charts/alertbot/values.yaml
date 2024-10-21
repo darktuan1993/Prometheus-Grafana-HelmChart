@@ -103,6 +103,35 @@ alertbot:
     split_msg_byte: 10000
 
   template: |-
-    hello
+    {{if eq .Status "resolved"}}
+    PHỤC HỒI
+    ------------------------------------------------------
+    Nội dung: {{.CommonAnnotations.summary}}
+    Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
+    Máy Chủ: {{ .CommonLabels.instance }}
+    Status:  {{ .Status  | str_UpperCase}}
+    ------------------------------------------------------
+    {{- range $val := .Alerts }}
+    Xử lý cảnh báo lúc: <code>{{ $val.StartsAt | str_FormatDate }}</code>
+    {{- end -}}
+    {{end -}}
+
+    {{if eq .Status "firing"}}
+    CẢNH BÁO
+    ------------------------------------------------------
+    Nội dung: {{.CommonAnnotations.summary}}
+    Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
+
+    Hệ thống viện: <b> {{ .CommonLabels.app_type | str_UpperCase }} </b>
+
+    Máy Chủ: {{ .CommonLabels.instance }}
+    Thông tin: {{.CommonAnnotations.description}}
+    Mức Độ:  <code>  {{ .CommonLabels.severity | str_UpperCase }}  </code>
+
+    ------------------------------------------------------
+    {{- range $val := .Alerts }}
+    THỜI GIAN: <code>{{ $val.StartsAt | str_FormatDate }}</code>
+    {{- end -}}
+    {{end }}
 
 
