@@ -13,7 +13,7 @@ image:
   repository: quay.io/prometheus/alertmanager
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 # Full external URL where alertmanager is reachable, used for backlinks.
 baseURL: ""
