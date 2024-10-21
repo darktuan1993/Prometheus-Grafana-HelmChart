@@ -22,13 +22,38 @@ persistence:
   size: 80Gi
   storageClassName: nfs-csi-nas
 
+
+
+alertrule:
+    ruleFile: |-
+    groups:
+      - name: Cluster Manager-Rules
+        rules:
+          # Node Down
+          - alert: Cảnh Báo Server
+            expr:  up{instance=~".+"} == 0
+            for: 1m
+            labels:
+              severity: Khẩn cấp
+              app_type: Cluster Manager
+              category: server
+              instance: "{{ $labels.instance }}"
+            annotations:
+              summary: "Node-export trên server {{ $labels.instance }} bị tắt"
+              description: | 
+                    Vui lòng kiểm tra lại service giám sát trên server, kiểm lại VPN site to site hoặc kiểm tra server có bị tắt hay không ?
+
 prometheus:
-  configTemplate: |-
+    configTemplate: |-
     global:
       evaluation_interval: 1m
       scrape_interval: 15s
       scrape_timeout: 10s
 
+    # Rules config 
+    rule_files:
+      - "/etc/rules/kubernetes.yml"
+    
     alerting:
       alertmanagers:
       - scheme: http
@@ -84,10 +109,8 @@ prometheus:
           - targets:
               # - '192.168.140.17:30749'
               - '192.168.140.217:9100'
-              - '192.168.140.218:9100'
+              #- '192.168.140.218:9100'
               - '192.168.140.219:9100'
               - '192.168.140.221:9100'
               - '192.168.140.222:9100'
               - '192.168.140.223:9100'
-              - '192.168.140.224:9100'
-              - '192.168.140.225:9100'
