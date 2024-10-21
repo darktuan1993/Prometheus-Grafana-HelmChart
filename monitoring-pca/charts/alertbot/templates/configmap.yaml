@@ -9,4 +9,4 @@ data:
     {{ tpl .Values.alertbot.configTemplate . | nindent 4 }} 
     
   template.tmpl: |-
-    {{ tpl .Values.alertbot.template . }} 
+    {{ tpl (.Values.alertbot.template | quote) . | nindent 4 }}
