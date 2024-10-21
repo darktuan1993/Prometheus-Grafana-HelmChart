@@ -23,7 +23,7 @@ persistence:
   storageClassName: nfs-csi-nas
 
 
-prometheus:
+# prometheus:
   configTemplate: |-
     global:
       evaluation_interval: 1m
