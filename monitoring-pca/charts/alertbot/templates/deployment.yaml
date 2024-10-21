@@ -48,11 +48,15 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: botalert-config
-              mountPath: /
+              mountPath: /config.yaml
               subPath: config.yaml
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
+            - name: template
+              mountPath: /etc/telegrambot/template.tmpl
+              subPath: template.tmpl
+
       volumes:
         - name: botalert-config
           configMap:
