@@ -35,7 +35,9 @@ spec:
             - name: prometheus-rules
               mountPath: /etc/prometheus/rules/kubernetes.yml
               subPath: kubernetes.yml
-
+            - name: localtime
+              mountPath: /etc/localtime
+              readOnly: true
             - name: prometheus-data
               mountPath: /prometheus
           args:
@@ -66,3 +68,7 @@ spec:
         - name: prometheus-data
           persistentVolumeClaim:
             claimName: {{ include "prometheus.fullname" . }}-pvc
+        - name: localtime
+          hostPath:
+            path: /etc/localtime  
+            type: File     
