@@ -95,18 +95,6 @@ alertbot:
     split_msg_byte: 10000
 
   template: |-
-    {{if eq .Status "resolved"}}
-    ✅💙PHỤC HỒI💙✅
-    Nội dung: {{.CommonAnnotations.summary}}
-    Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
-    Máy Chủ: {{ .CommonLabels.instance }}
-    {{end}}
-
-    {{if eq .Status "firing"}}
-    🚨🆘CẢNH BÁO🆘🚨
-    Nội dung: {{.CommonAnnotations.summary}}
-    Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
-    Máy Chủ: {{ .CommonLabels.instance }}
-    {{end}}
+    Add vào trong
 
 
