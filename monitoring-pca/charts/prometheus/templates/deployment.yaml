@@ -37,17 +37,17 @@ spec:
             - "--storage.tsdb.path=/prometheus"
             - "--web.console.libraries=/etc/prometheus/console_libraries"
             - "--web.console.templates=/etc/prometheus/consoles"
-            - "--storage.tsdb.retention.time=5d"
+            - "--storage.tsdb.retention.time=15d"
           livenessProbe:
             httpGet:
               path: /-/healthy
-              port: http
+              port: 9090
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /-/ready
-              port: http
+              port: 9090
             initialDelaySeconds: 5
             periodSeconds: 10
       volumes:
