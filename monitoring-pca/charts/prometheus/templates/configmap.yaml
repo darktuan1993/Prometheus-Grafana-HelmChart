@@ -7,6 +7,3 @@ metadata:
 data:
   prometheus.yml: |-
     {{ tpl .Values.prometheus.configTemplate . | nindent 4 }}
-
-  kubernetes.yml: |-
-    {{ tpl .Values.alertrule.ruleFile . | nindent 4 }}

@@ -23,26 +23,6 @@ persistence:
   storageClassName: nfs-csi-nas
 
 
-
-alertrule:
-  ruleFile: |-
-    groups:
-      - name: Cluster Manager-Rules
-        rules:
-          # Node Down
-          - alert: Cảnh Báo Server
-            expr:  up == 0
-            for: 1m
-            labels:
-              severity: Khẩn cấp
-              app_type: Cluster Manager
-              category: server
-              instance: hello
-            annotations:
-              summary: "Node-export trên server bị tắt"
-              description: | 
-                    Vui lòng kiểm tra lại service giám sát trên server, kiểm lại VPN site to site hoặc kiểm tra server có bị tắt hay không ?
-
 prometheus:
   configTemplate: |-
     global:
