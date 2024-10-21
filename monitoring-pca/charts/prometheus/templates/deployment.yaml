@@ -29,11 +29,13 @@ spec:
             - containerPort: 9090
           volumeMounts:
             - name: prometheus-config
-              mountPath: /etc/prometheus/
+              mountPath: /etc/prometheus/prometheus.yml
+              subPath: prometheus.yml
             - name: prometheus-data
               mountPath: /prometheus
             - name: prometheus-rules
-              mountPath: /etc/prometheus/
+              mountPath: /etc/prometheus/rules/kubernetes.yml
+              subPath: kubernetes.yml
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus"
