@@ -69,11 +69,11 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /
-    port: 9087
+    port: http
 readinessProbe:
   httpGet:
     path: /
-    port: 9087
+    port: http
 
 autoscaling:
   enabled: false
