@@ -9,4 +9,4 @@ data:
     {{ tpl .Values.prometheus.configTemplate . | nindent 4 }}
 
   kubernetes.yml: |-
-    {{ .Files.Get config/rules/kubernetes.yml | nindent 4 }} 
+    {{ .Files.Get "config/rules/kubernetes.yml" | nindent 4 }} 
