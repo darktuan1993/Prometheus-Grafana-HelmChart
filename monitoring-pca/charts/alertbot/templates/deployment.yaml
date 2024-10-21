@@ -48,7 +48,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: botalert-config
-              mountPath: /config.yaml
+              mountPath: /
               subPath: config.yaml
             - name: localtime
               mountPath: /etc/localtime
