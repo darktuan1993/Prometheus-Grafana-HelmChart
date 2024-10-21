@@ -49,14 +49,14 @@ spec:
           volumeMounts:
             # - name: botalert-config
             #   mountPath: config.yaml
-            - name: localtime
-              mountPath: /etc/localtime
-              readOnly: true
+            # - name: localtime
+            #   mountPath: /etc/localtime
+            #   readOnly: true
       volumes:
         # - name: botalert-config
         #   configMap:
         #     name: {{ include "alertbot.fullname" . }}-config
-        - name: localtime
-          hostPath:
-            path: /etc/localtime  
-            type: File            
+        # - name: localtime
+        #   hostPath:
+        #     path: /etc/localtime  
+        #     type: File            
