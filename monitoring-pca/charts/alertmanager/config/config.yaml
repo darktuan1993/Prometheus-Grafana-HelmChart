@@ -3,10 +3,6 @@ global:
 
 receivers:
 
-- name: benhviene-telegram
-  webhook_configs:
-  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local:9087/alert/-4194274582'
-
 # Group Dự phòng
 - name: systems-team-telegram
   webhook_configs:
@@ -16,19 +12,13 @@ receivers:
 route:
   continue: false
   group_by: ['instance']
-  group_interval: 1m
+  group_interval: 100m
   group_wait: 5s
-  repeat_interval: 1m
+  repeat_interval: 100m
   receiver: systems-team-telegram
   routes:
 
 ##################### SERVER-NODE EXPORTER #######################
-##################### SERVER-NODE EXPORTER #######################
-##################### SERVER-NODE EXPORTER #######################
-##################### SERVER-NODE EXPORTER #######################
-##################### SERVER-NODE EXPORTER #######################
-##################### SERVER-NODE EXPORTER #######################
-
     # ClusterManager
     - match:
         app_type: ClusterManager
