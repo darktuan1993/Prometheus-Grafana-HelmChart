@@ -31,8 +31,8 @@ route:
 
     # Hệ Thống Y Tế Công Cộng
     - match:
-        app_type: Y Tế Công Cộng
-        instance: 183.80.255.19:19105
+        app_type: ClusterManager
+        instance: 192.168.140.18:32645
         category: server  
       receiver: systems-team-telegram
       group_wait: 10s

@@ -17,7 +17,7 @@ Xử lý cảnh báo lúc: <code>{{ $val.StartsAt | str_FormatDate }}</code>
 Nội dung: {{.CommonAnnotations.summary}}
 Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
 
-Hệ thống viện: <b> {{ .CommonLabels.app_type | str_UpperCase }} </b>
+Hệ thống Cluster: <b> {{ .CommonLabels.app_type | str_UpperCase }} </b>
 
 Máy Chủ: {{ .CommonLabels.instance }}
 Thông tin: {{.CommonAnnotations.description}}
