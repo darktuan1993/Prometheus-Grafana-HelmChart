@@ -7,5 +7,6 @@ metadata:
 data:
   config.yaml: |-
     {{ tpl .Values.alertbot.configTemplate . | nindent 4 }} 
+    
   template.tmpl: |-
     {{ tpl .Values.alertbot.template . | nindent 4 }} 
