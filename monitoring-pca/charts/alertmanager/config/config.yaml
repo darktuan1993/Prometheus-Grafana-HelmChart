@@ -5,12 +5,12 @@ receivers:
 
 - name: benhviene-telegram
   webhook_configs:
-  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local/alert/-4194274582'
+  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local:9087/alert/-4194274582'
 
 # Group Dự phòng
 - name: systems-team-telegram
   webhook_configs:
-  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local/alert/-4194274582'
+  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local:9087/alert/-4194274582'
 
 
 route:
