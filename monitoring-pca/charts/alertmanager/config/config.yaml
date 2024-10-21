@@ -1,0 +1,38 @@
+global:
+  resolve_timeout: 1m
+
+receivers:
+
+- name: benhviene-telegram
+  webhook_configs:
+  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local/alert/-4194274582'
+
+# Group Dự phòng
+- name: systems-team-telegram
+  webhook_configs:
+  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local/alert/-4194274582'
+
+
+route:
+  continue: false
+  group_by: ['instance']
+  group_interval: 1m
+  group_wait: 5s
+  repeat_interval: 15m
+  receiver: systems-team-telegram
+  routes:
+
+##################### SERVER-NODE EXPORTER #######################
+##################### SERVER-NODE EXPORTER #######################
+##################### SERVER-NODE EXPORTER #######################
+##################### SERVER-NODE EXPORTER #######################
+##################### SERVER-NODE EXPORTER #######################
+##################### SERVER-NODE EXPORTER #######################
+
+    # Hệ Thống Y Tế Công Cộng
+    - match:
+        app_type: Y Tế Công Cộng
+        instance: 183.80.255.19:19105
+        category: server  
+      receiver: systems-team-telegram
+      group_wait: 10s
