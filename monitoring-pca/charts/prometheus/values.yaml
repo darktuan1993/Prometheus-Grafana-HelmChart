@@ -25,7 +25,7 @@ persistence:
 
 
 alertrule:
-    ruleFile: |-
+  ruleFile: |-
     groups:
       - name: Cluster Manager-Rules
         rules:
@@ -44,7 +44,7 @@ alertrule:
                     Vui lòng kiểm tra lại service giám sát trên server, kiểm lại VPN site to site hoặc kiểm tra server có bị tắt hay không ?
 
 prometheus:
-    configTemplate: |-
+  configTemplate: |-
     global:
       evaluation_interval: 1m
       scrape_interval: 15s

@@ -1,68 +1,68 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: {{ include "prometheus.fullname" . }}
-#   labels:
-#     app: {{ include "prometheus.name" . }}
-# spec:
-#   replicas: {{ .Values.replicaCount }}
-#   selector:
-#     matchLabels:
-#       app: {{ include "prometheus.name" . }}
-#   template:
-#     metadata:
-#       labels:
-#         app: {{ include "prometheus.name" . }}
-#     spec:
-#       serviceAccountName: {{ include "prometheus.fullname" . }}-sa
-#       securityContext:
-#         fsGroup: 65534
-#         runAsGroup: 65534
-#         runAsNonRoot: true
-#         runAsUser: 65534
-#         seccompProfile:
-#           type: RuntimeDefault
-#       containers:
-#         - name: prometheus
-#           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-#           ports:
-#             - containerPort: 9090
-#           volumeMounts:
-#             - name: prometheus-config
-#               mountPath: /etc/prometheus/prometheus.yml
-#               subPath: prometheus.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prometheus.fullname" . }}
+  labels:
+    app: {{ include "prometheus.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "prometheus.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "prometheus.name" . }}
+    spec:
+      serviceAccountName: {{ include "prometheus.fullname" . }}-sa
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: prometheus
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus/prometheus.yml
+              subPath: prometheus.yml
 
-#             - name: prometheus-rules
-#               mountPath: /etc/prometheus/rules/kubernetes.yml
-#               subPath: kubernetes.yml
+            - name: prometheus-rules
+              mountPath: /etc/prometheus/rules/kubernetes.yml
+              subPath: kubernetes.yml
 
-#             - name: prometheus-data
-#               mountPath: /prometheus
-#           args:
-#             - "--config.file=/etc/prometheus/prometheus.yml"
-#             - "--storage.tsdb.path=/prometheus"
-#             - "--web.console.libraries=/etc/prometheus/console_libraries"
-#             - "--web.console.templates=/etc/prometheus/consoles"
-#             - "--storage.tsdb.retention.time=15d"
-#           livenessProbe:
-#             httpGet:
-#               path: /-/healthy
-#               port: 9090
-#             initialDelaySeconds: 30
-#             periodSeconds: 10
-#           readinessProbe:
-#             httpGet:
-#               path: /-/ready
-#               port: 9090
-#             initialDelaySeconds: 5
-#             periodSeconds: 10
-#       volumes:
-#         - name: prometheus-config
-#           configMap:
-#             name: {{ include "prometheus.fullname" . }}-config
-#         - name: prometheus-rules
-#           configMap:
-#             name: {{ include "prometheus.fullname" . }}-config
-#         - name: prometheus-data
-#           persistentVolumeClaim:
-#             claimName: {{ include "prometheus.fullname" . }}-pvc
+            - name: prometheus-data
+              mountPath: /prometheus
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+            - "--web.console.libraries=/etc/prometheus/console_libraries"
+            - "--web.console.templates=/etc/prometheus/consoles"
+            - "--storage.tsdb.retention.time=15d"
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      volumes:
+        - name: prometheus-config
+          configMap:
+            name: {{ include "prometheus.fullname" . }}-config
+        - name: prometheus-rules
+          configMap:
+            name: {{ include "prometheus.fullname" . }}-config
+        - name: prometheus-data
+          persistentVolumeClaim:
+            claimName: {{ include "prometheus.fullname" . }}-pvc
