@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "alertbot.fullname" . }}-config
+  labels:
+    app: {{ include "alertbot.name" . }}
+data:
+  config.yml: |-
+  {{ tpl .Values.alertbot.configTemplate . | nindent 4 }}

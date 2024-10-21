@@ -92,3 +92,12 @@ affinity: {}
 volumes: []
 
 volumeMounts: []
+
+alertbot:
+  configTemplate: |-
+    telegram_token: "5765051913:AAEXYcQKE0h8FTiC8Ba0DgNutliSMBbXAjw"
+    template_path: "/etc/telegrambot/template.tmpl"
+    time_zone: "Asia/Ho_Chi_Minh"
+    split_token: "|"
+    time_outdata: "02/01/2006 15:04:05"
+    split_msg_byte: 10000
