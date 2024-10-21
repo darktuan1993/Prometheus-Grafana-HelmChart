@@ -46,17 +46,18 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      #     volumeMounts:
-      #       - name: botalert-config
-      #         mountPath: /etc/alertbot/config.yaml
-      #       - name: localtime
-      #         mountPath: /etc/localtime
-      #         readOnly: true
-      # volumes:
-      #   - name: botalert-config
-      #     configMap:
-      #       name: {{ include "alertbot.fullname" . }}-config
-      #   - name: localtime
-      #     hostPath:
-      #       path: /etc/localtime  
-      #       type: File            
+          volumeMounts:
+            - name: botalert-config
+              mountPath: /etc/alertbot/config.yaml
+              subPath: config.yaml
+            - name: localtime
+              mountPath: /etc/localtime
+              readOnly: true
+      volumes:
+        - name: botalert-config
+          configMap:
+            name: {{ include "alertbot.fullname" . }}-config
+        - name: localtime
+          hostPath:
+            path: /etc/localtime  
+            type: File            
