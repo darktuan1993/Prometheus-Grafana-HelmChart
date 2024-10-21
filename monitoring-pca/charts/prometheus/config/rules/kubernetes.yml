@@ -11,6 +11,6 @@ groups:
           category: server
           instance: "{{ $labels.instance }}"
         annotations:
-          summary: "Node-export trên server {{ $labels.instance }} bị tắt"
+          summary: "Exporter trên server {{ $labels.instance }} bị tắt"
           description: | 
-                Vui lòng kiểm tra lại service giám sát trên server, kiểm lại VPN site to site hoặc kiểm tra server có bị tắt hay không ?
+                Vui lòng kiểm tra lại service giám sát trên server?
