@@ -321,7 +321,7 @@ configmapReload:
   ##
   image:
     repository: quay.io/prometheus-operator/prometheus-config-reloader
-    tag: v0.66.0
+    tag: latest
     pullPolicy: IfNotPresent
 
   # containerPort: 9533
