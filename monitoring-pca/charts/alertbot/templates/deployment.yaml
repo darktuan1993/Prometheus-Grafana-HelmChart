@@ -48,8 +48,8 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: botalert-config
-              mountPath: /etc/alertbot/config.yaml   # Mount vào một đường dẫn cụ thể trong container
-              subPath: config.yaml  # Đảm bảo chỉ mount đúng file "config.yaml"
+              mountPath: /etc/alertbot/config.yaml
+              subPath: config.yaml  
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true

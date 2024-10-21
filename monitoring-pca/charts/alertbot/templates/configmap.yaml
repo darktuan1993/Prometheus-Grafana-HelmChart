@@ -6,7 +6,4 @@ metadata:
     app: {{ include "alertbot.name" . }}
 data:
   config.yml: |-
-    {{ tpl .Values.alertbot.configTemplate . | nindent 4 }}
-  
-  template.tmpl: |-
-    {{ tpl .Values.alertbot.template . | nindent 4 }}
+    {{ tpl .Values.alertbot.configTemplate . | nindent 4 }} 
