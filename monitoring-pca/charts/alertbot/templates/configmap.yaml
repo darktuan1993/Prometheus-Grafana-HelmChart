@@ -6,7 +6,7 @@ metadata:
     app: {{ include "alertbot.name" . }}
 data:
   config.yaml: |-
-    {{ tpl .Values.alertbot.configTemplate . | nindent 4 }} 
+    {{ .Files.Get "config/config.yaml" | nindent 4 }} 
     
   template.tmpl: |-
-    {{ tpl .Values.alertbot.template . | nindent 4 }}
+    {{ .Files.Get "config/template.tmpl" | nindent 4 }} 
