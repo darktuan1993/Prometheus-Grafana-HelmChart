@@ -49,12 +49,15 @@ spec:
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
-            - name: botalert-config
+            - name: botalert-template
               mountPath: /etc/telegrambot/template.tmpl
               subPath: template.tmpl
 
       volumes:
         - name: botalert-config
+          configMap:
+            name: {{ include "alertbot.fullname" . }}-config
+        - name: botalert-template
           configMap:
             name: {{ include "alertbot.fullname" . }}-config
         - name: localtime
