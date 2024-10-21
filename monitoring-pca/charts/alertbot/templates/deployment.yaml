@@ -53,7 +53,7 @@ spec:
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
-            - name: template
+            - name: botalert-config
               mountPath: /etc/telegrambot/template.tmpl
               subPath: template.tmpl
 
