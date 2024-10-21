@@ -41,13 +41,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /-/healthy
-              port: 9090
+              port: http
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /-/ready
-              port: 9090
+              port: http
             initialDelaySeconds: 5
             periodSeconds: 10
       volumes:
