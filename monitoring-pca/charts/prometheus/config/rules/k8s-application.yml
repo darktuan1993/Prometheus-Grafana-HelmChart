@@ -84,7 +84,7 @@ groups:
         labels:
           severity: Khẩn cấp
           app_type: Cluster Application
-          category: Kubernetes
+          category: kubernetes
         annotations:
           summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.exported_instance }}"
           description: | 
