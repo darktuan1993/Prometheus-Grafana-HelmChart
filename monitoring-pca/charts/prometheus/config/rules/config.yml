@@ -52,6 +52,7 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
+          - '192.168.140.207:30749'
           - "192.168.140.207:9100"
           - "192.168.140.208:9100"
           - "192.168.140.209:9100"
