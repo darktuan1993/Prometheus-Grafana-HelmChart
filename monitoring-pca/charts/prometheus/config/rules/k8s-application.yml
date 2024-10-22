@@ -32,10 +32,10 @@ groups:
 
             Thông Tin Cụ Thể:
 
-                 * TOTAL RAM: {{ query (printf "node_memory_MemTotal_bytes{job='K8s-bravoapp-node', instance=~'%s'}" $labels.instance) | first | value  | humanize1024}}
+                 * TOTAL RAM: {{ query (printf "node_memory_MemTotal_bytes{job='k8s-bravoapp-node', instance=~'%s'}" $labels.instance) | first | value  | humanize1024}}
 
-                 * Ram sử dụng: {{ query (printf "node_memory_MemTotal_bytes{job='K8s-bravoapp-node', instance=~'%s'} - node_memory_MemFree_bytes{job='K8s-bravoapp-node', instance=~'%s'} - node_memory_Cached_bytes{job='K8s-bravoapp-node', instance=~'%s'} - node_memory_Buffers_bytes{job='K8s-bravoapp-node', instance=~'%s'}" $labels.instance $labels.instance $labels.instance $labels.instance) | first | value | humanize1024 }}
+                 * Ram sử dụng: {{ query (printf "node_memory_MemTotal_bytes{job='k8s-bravoapp-node', instance=~'%s'} - node_memory_MemFree_bytes{job='k8s-bravoapp-node', instance=~'%s'} - node_memory_Cached_bytes{job='k8s-bravoapp-node', instance=~'%s'} - node_memory_Buffers_bytes{job='k8s-bravoapp-node', instance=~'%s'}" $labels.instance $labels.instance $labels.instance $labels.instance) | first | value | humanize1024 }}
                                    
-                 * Ram Cache/buffe: {{ query (printf "node_memory_Cached_bytes{job='K8s-bravoapp-node', instance=~'%s'} + node_memory_Buffers_bytes{job='K8s-bravoapp-node', instance=~'%s'}" $labels.instance $labels.instance) | first | value  | humanize1024}}
+                 * Ram Cache/buffe: {{ query (printf "node_memory_Cached_bytes{job='k8s-bravoapp-node', instance=~'%s'} + node_memory_Buffers_bytes{job='k8s-bravoapp-node', instance=~'%s'}" $labels.instance $labels.instance) | first | value  | humanize1024}}
 
-                 * Ram còn lại:  {{ query (printf "node_memory_MemFree_bytes{job='K8s-bravoapp-node', instance=~'%s'}" $labels.instance) | first | value | humanize1024 }}
+                 * Ram còn lại:  {{ query (printf "node_memory_MemFree_bytes{job='k8s-bravoapp-node', instance=~'%s'}" $labels.instance) | first | value | humanize1024 }}
