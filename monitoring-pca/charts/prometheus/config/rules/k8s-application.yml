@@ -63,6 +63,7 @@ groups:
           severity: Khẩn cấp
           app_type: Cluster Application
           category: disk
+          instance: "{{ $labels.instance }}"
         annotations:
           summary: "Ổ CỨNG SẮP ĐẦY"
           description: | 
@@ -85,7 +86,8 @@ groups:
           severity: Khẩn cấp
           app_type: Cluster Application
           category: kubernetes
+          instance: "{{ $labels.instance }}"
         annotations:
-          summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.instance }}"
+          summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.exported_job }}"
           description: | 
                 Vui lòng kiểm tra lại !            
