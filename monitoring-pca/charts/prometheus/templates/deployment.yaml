@@ -33,8 +33,14 @@ spec:
               subPath: prometheus.yml
 
             - name: prometheus-rules
-              mountPath: /etc/prometheus/rules/kubernetes.yml
-              subPath: kubernetes.yml
+              mountPath: /etc/prometheus/rules/k8s-clustermanager.yml
+              subPath: k8s-clustermanager.yml
+
+            - name: prometheus-rules
+              mountPath: /etc/prometheus/rules/k8s-application.yml
+              subPath: k8s-application.yml
+
+
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true

@@ -8,7 +8,10 @@ data:
   prometheus.yml: |-
     {{ .Files.Get "config/rules/config.yml" | nindent 4 }} 
 
-  kubernetes.yml: |-
-    {{ .Files.Get "config/rules/kubernetes.yml" | nindent 4 }} 
+  k8s-clustermanager.yml: |-
+    {{ .Files.Get "config/rules/k8s-clustermanager.yml" | nindent 4 }}
+
+  k8s-application.yml: |-
+    {{ .Files.Get "config/rules/k8s-application.yml" | nindent 4 }} 
 
 
