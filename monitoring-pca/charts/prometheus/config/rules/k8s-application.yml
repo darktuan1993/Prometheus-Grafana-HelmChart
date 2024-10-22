@@ -101,5 +101,6 @@ groups:
           category: kubernetes
           instance: "{{ $labels.instance }}"
         annotations:
-            summary: Check pod not healthy (instance {{ $labels.instance }})
-            description: "Pod {{ $labels.namespace }}/{{ $labels.pod }}.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            summary: " Check pod not healthy (instance {{ $labels.instance }}) "
+            description: |
+               "Pod {{ $labels.namespace }}/{{ $labels.pod }}.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
