@@ -15,10 +15,8 @@ RESOLVED SỰ CỐ: <code>{{ $val.StartsAt | str_FormatDate }}</code>
 🚨🆘CẢNH BÁO🆘🚨
 ------------------------------------------------------
 Nội dung: {{.CommonAnnotations.summary}}
-Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
-
+Nhóm Cảnh báo:  <b> {{ .CommonLabels.alertname }} </b>
 Hệ thống Cluster: <b> {{ .CommonLabels.app_type | str_UpperCase }} </b>
-
 Máy Chủ:  {{ .CommonLabels.instance }}
 Thông tin:  {{.CommonAnnotations.description}}
 Mức Độ:  <code> 🔥 {{ .CommonLabels.severity | str_UpperCase }} 🔥 </code>
