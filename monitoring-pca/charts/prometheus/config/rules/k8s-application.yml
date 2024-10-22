@@ -93,10 +93,13 @@ groups:
                 Vui lòng kiểm tra lại !            
 
       - alert: KubernetesPodNotHealthy
-        expr: sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"}) > 0
+        expr: sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"}) == 0
         for: 15m
         labels:
-          severity: critical
+          severity: Khẩn cấp
+          app_type: Cluster Application
+          category: kubernetes
+          instance: "{{ $labels.instance }}"
         annotations:
             summary: Kubernetes Pod not healthy (instance {{ $labels.instance }})
             description: "Pod {{ $labels.namespace }}/{{ $labels.pod }} has been in a non-running state for longer than 15 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
