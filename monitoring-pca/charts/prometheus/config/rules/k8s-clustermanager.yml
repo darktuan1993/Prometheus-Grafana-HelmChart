@@ -75,5 +75,3 @@ groups:
                   * KL Đã dùng:  {{ query (printf "node_filesystem_size_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s',fstype!~"tmpfs|aufs|overlay|vfat|ramfs"} - node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s'}" $labels.instance $labels.mountpoint $labels.instance $labels.mountpoint) | first | value | humanize1024}}
 
                   * KL Còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s',fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
-
-              Vào fix đi anh em !
