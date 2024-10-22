@@ -43,7 +43,7 @@ route:
         category: cpu  
       receiver: systems-team-telegram
       group_wait: 10s
-
+    # KUBERNETES
     - match:
         app_type: Cluster Manager
         category: kubernetes  

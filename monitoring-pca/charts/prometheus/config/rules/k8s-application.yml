@@ -80,7 +80,7 @@ groups:
 
       # Kuber API Server
       - alert: Cảnh Báo POD Kubeapi-server
-        expr: up{exported_job='kubernetes-apiservers',job='cluster-application-k8s'} == 1
+        expr: up{exported_job='kubernetes-apiservers',job='cluster-application-k8s',instance=~".+"} == 1
         for: 1m
         labels:
           severity: Khẩn cấp
