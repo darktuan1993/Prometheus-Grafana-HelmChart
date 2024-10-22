@@ -1,5 +1,5 @@
 {{if eq .Status "resolved"}}
-✅💙RESOLVED💙✅
+✅💙RESOLVED UAT CLUSTER💙✅
 ------------------------------------------------------
 Nội dung: {{.CommonAnnotations.summary}}
 Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
@@ -12,7 +12,7 @@ RESOLVED SỰ CỐ: <code>{{ $val.StartsAt | str_FormatDate }}</code>
 {{end -}}
 
 {{if eq .Status "firing"}}
-🚨🆘CẢNH BÁO🆘🚨
+🚨🆘CẢNH BÁO UAT CLUSTER🆘🚨
 ------------------------------------------------------
 Nội dung: {{.CommonAnnotations.summary}}
 Nhóm Cảnh báo:  <b> {{ .CommonLabels.alertname }} </b>
