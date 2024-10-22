@@ -32,3 +32,9 @@ route:
         category: memory  
       receiver: systems-team-telegram
       group_wait: 10s
+##################### SERVER-NODE RAM #######################
+    - match:
+        app_type: Cluster Manager
+        category: disk  
+      receiver: systems-team-telegram
+      group_wait: 10s
