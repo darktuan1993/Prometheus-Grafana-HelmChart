@@ -2,7 +2,7 @@ groups:
   - name: Rules
     rules:
       # Node Down
-      - alert: Cảnh Báo Server
+      - alert: (STATUS)-Node
         expr:  up{instance=~".+",job="k8s-bravoapp-node"} == 0
         for: 1m
         labels:
@@ -16,7 +16,7 @@ groups:
                 Vui lòng kiểm tra lại !
 
       # Ram Rules
-      - alert: Cảnh báo RAM
+      - alert: (RAM)
         expr: (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_MemFree_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Buffers_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Cached_bytes{job="k8s-bravoapp-node", instance=~".+"} ) / (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"}) * 100 > 95
         for: 1m
         labels:
@@ -41,7 +41,7 @@ groups:
                  * Ram còn lại:  {{ query (printf "node_memory_MemFree_bytes{job='k8s-bravoapp-node', instance=~'%s'}" $labels.instance) | first | value | humanize1024 }}
 
       # CPU Rules
-      - alert: Cảnh Báo CPU
+      - alert: (CPU)
         expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job="k8s-bravoapp-node", instance=~".+",mode="idle"}[1m])) * 100) > 90
         for: 1m
         labels:
@@ -91,3 +91,12 @@ groups:
           summary: "Service Kubeapi-server {{ $labels.exported_instance }} bị tắt"
           description: | 
                 Vui lòng kiểm tra lại !            
+
+      - alert: KubernetesPodNotHealthy
+        expr: sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"}) > 0
+        for: 15m
+        labels:
+          severity: critical
+        annotations:
+            summary: Kubernetes Pod not healthy (instance {{ $labels.instance }})
+            description: "Pod {{ $labels.namespace }}/{{ $labels.pod }} has been in a non-running state for longer than 15 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
