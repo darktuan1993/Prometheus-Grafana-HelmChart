@@ -19,8 +19,8 @@ Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
 
 Hệ thống Cluster: <b> {{ .CommonLabels.app_type | str_UpperCase }} </b>
 
-Máy Chủ: {{ .CommonLabels.instance }}
-Thông tin: {{.CommonAnnotations.description}}
+Máy Chủ:  {{ .CommonLabels.instance }}
+Thông tin:  {{.CommonAnnotations.description}}
 Mức Độ:  <code> 🔥 {{ .CommonLabels.severity | str_UpperCase }} 🔥 </code>
 
 ------------------------------------------------------
