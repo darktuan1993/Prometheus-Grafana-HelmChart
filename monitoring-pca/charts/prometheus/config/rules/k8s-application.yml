@@ -18,7 +18,7 @@ groups:
 
       # Ram Rules
       - alert: Cảnh báo RAM
-        expr: (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_MemFree_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Buffers_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Cached_bytes{job="k8s-bravoapp-node", instance=~".+"} ) / (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"}) * 100 > 0
+        expr: (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_MemFree_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Buffers_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Cached_bytes{job="k8s-bravoapp-node", instance=~".+"} ) / (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"}) * 100 > 95
         for: 1m
         labels:
           severity: Khẩn cấp
