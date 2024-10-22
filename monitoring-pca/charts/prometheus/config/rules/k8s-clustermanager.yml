@@ -42,7 +42,7 @@ groups:
 
       # CPU Rules
       - alert: CPU Tăng cao
-        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job="k8s-management-node", instance=~".+",mode="idle"}[1m])) * 100) > 0
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job="k8s-management-node", instance=~".+",mode="idle"}[1m])) * 100) > 95
         for: 1m
         labels:
           severity: Khẩn cấp
@@ -70,7 +70,7 @@ groups:
 
               Thông Tin Cụ Thể:
 
-                  * TOTAL DISK:  {{ query (printf "node_filesystem_size_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
+                  * TOTAL DISK:  {{ query (printf "node_filesystem_size_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s',fstype!~"tmpfs|aufs|overlay|vfat|ramfs" }" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
 
                   * KL Đã dùng:  {{ query (printf "node_filesystem_size_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s'} - node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s'}" $labels.instance $labels.mountpoint $labels.instance $labels.mountpoint) | first | value | humanize1024}}
 
