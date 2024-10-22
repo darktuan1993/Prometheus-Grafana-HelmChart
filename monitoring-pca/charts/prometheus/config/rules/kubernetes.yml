@@ -3,7 +3,7 @@ groups:
     rules:
       # Node Down
       - alert: Cảnh Báo Server
-        expr:  up{instance=~".+"} == 0
+        expr:  up{instance=~".+",job="k8s-management-node"} == 0
         for: 1m
         labels:
           severity: Khẩn cấp
@@ -11,6 +11,6 @@ groups:
           category: server
           instance: "{{ $labels.instance }}"
         annotations:
-          summary: "Exporter trên server {{ $labels.instance }} bị tắt"
+          summary: "Service giám sát hoặc server bị tắt trên máy chủ {{ $labels.instance }}"
           description: | 
-                Vui lòng kiểm tra lại service giám sát trên server?
+                Vui lòng kiểm tra lại !
