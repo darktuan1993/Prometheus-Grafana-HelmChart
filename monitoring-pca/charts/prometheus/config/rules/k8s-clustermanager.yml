@@ -56,7 +56,7 @@ groups:
 
       # Disk Rules
       - alert: Dung lượng DISK
-        expr: (100 - ((node_filesystem_free_bytes{instance=~".+",job="k8s-management-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}) / (node_filesystem_size_bytes{instance=~".+",job="k8s-management-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}))* 100) > 0
+        expr: (100 - ((node_filesystem_free_bytes{instance=~".+",job="k8s-management-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}) / (node_filesystem_size_bytes{instance=~".+",job="k8s-management-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}))* 100) > 20
         for: 1m
         labels:
           severity: Khẩn cấp
