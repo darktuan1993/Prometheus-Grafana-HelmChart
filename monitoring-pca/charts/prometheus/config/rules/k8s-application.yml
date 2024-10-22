@@ -54,3 +54,23 @@ groups:
           summary: "CPU Server > 95%"
           description: | 
             CPU sử dụng đạt tới  {{ printf "%.2f" $value }}% / 100%
+
+
+      # Disk Rules
+      - alert: Dung lượng DISK
+        expr: (100 - ((node_filesystem_free_bytes{instance=~".+",job="k8s-bravoapp-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}) / (node_filesystem_size_bytes{instance=~".+",job="k8s-bravoapp-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}))* 100) > 20
+        for: 1m
+        labels:
+          severity: Khẩn cấp
+          app_type: Cluster Application
+          category: disk
+        annotations:
+          summary: "Ổ CỨNG SẮP ĐẦY"
+          description: | 
+          
+              Phân vùng {{ $labels.device }} 
+              Mount thư mục:  {{ $labels.mountpoint }} 
+              Đạt ngưỡng {{ printf "%.2f" $value }}% / 100%
+
+              Thông Tin Cụ Thể:
+                * Dung lượng còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-bravoapp-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
