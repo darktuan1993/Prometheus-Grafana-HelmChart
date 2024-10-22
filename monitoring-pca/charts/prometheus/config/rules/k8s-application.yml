@@ -88,6 +88,6 @@ groups:
           category: kubernetes
           instance: "{{ $labels.instance }}"
         annotations:
-          summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.exported_instance }}"
+          summary: "Kuber-Apiserver bị tắt trên node master"
           description: | 
                 Vui lòng kiểm tra lại !            
