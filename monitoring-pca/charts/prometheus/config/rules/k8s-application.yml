@@ -88,6 +88,6 @@ groups:
           category: kubernetes
           instance: "{{ $labels.exported_instance }}"
         annotations:
-          summary: "Service giám sát hoặc server bị tắt trên máy chủ {{ $labels.instance }}"
+          summary: "Service Kubeapi-server {{ $labels.exported_instance }} bị tắt"
           description: | 
                 Vui lòng kiểm tra lại !            
