@@ -29,7 +29,7 @@ scrape_configs:
       # Skip SSL verification
       insecure_skip_verify: true
     static_configs:
-      - targets: [192.168.140.208:32083]
+      - targets: [192.168.140.208:31419]
         labels:
           cluster_name: cluster-manager-k8s
 
@@ -44,7 +44,7 @@ scrape_configs:
       # Skip SSL verification
       insecure_skip_verify: true
     static_configs:
-      - targets: [192.168.140.18:32645]
+      - targets: [192.168.140.218:32645]
         labels:
           cluster_name: cluster-application-k8s
 
@@ -63,7 +63,7 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-          # - '192.168.140.17:30749'
+          - '192.168.140.217:30749'
           - "192.168.140.217:9100"
           - '192.168.140.218:9100'
           - "192.168.140.219:9100"
