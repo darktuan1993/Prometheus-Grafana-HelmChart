@@ -43,7 +43,7 @@ groups:
 
       # CPU Rules
       - alert: Cảnh Báo CPU
-        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job="k8s-bravoapp-node", instance=~".+",mode="idle"}[1m])) * 100) > 96
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job="k8s-bravoapp-node", instance=~".+",mode="idle"}[1m])) * 100) > 1
         for: 1m
         labels:
           severity: Khẩn cấp
