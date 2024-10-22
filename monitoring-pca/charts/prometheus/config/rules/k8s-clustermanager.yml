@@ -70,5 +70,4 @@ groups:
               đạt {{ printf "%.2f" $value }}% / 100%
 
               Thông Tin Cụ Thể:
-
-                * KL Còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
+                * Dung lượng còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
