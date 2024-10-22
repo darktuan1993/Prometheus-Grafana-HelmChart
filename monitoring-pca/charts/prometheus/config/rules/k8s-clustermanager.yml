@@ -66,8 +66,9 @@ groups:
           summary: "Ổ CỨNG SẮP ĐẦY"
           description: | 
           
-              Dung lượng {{ $labels.device }} mount thư mục:  {{ $labels.mountpoint }} 
-              đạt {{ printf "%.2f" $value }}% / 100%
+              Phân vùng {{ $labels.device }} 
+              Mount thư mục:  {{ $labels.mountpoint }} 
+              Đạt ngưỡng {{ printf "%.2f" $value }}% / 100%
 
               Thông Tin Cụ Thể:
                 * Dung lượng còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
