@@ -41,7 +41,7 @@ groups:
                  * Ram còn lại:  {{ query (printf "node_memory_MemFree_bytes{job='k8s-management-node', instance=~'%s'}" $labels.instance) | first | value | humanize1024 }}
 
       # CPU Rules
-      - alert: CPU Tăng cao
+      - alert: Cảnh Báo CPU
         expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{job="k8s-management-node", instance=~".+",mode="idle"}[1m])) * 100) > 95
         for: 1m
         labels:
@@ -55,7 +55,7 @@ groups:
             CPU sử dụng đạt tới  {{ printf "%.2f" $value }}% / 100%
 
       # Disk Rules
-      - alert: Dung lượng DISK
+      - alert: Cảnh Báo Phân Vùng Ổ Cứng
         expr: (100 - ((node_filesystem_free_bytes{instance=~".+",job="k8s-management-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}) / (node_filesystem_size_bytes{instance=~".+",job="k8s-management-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}))* 100) > 20
         for: 1m
         labels:
