@@ -3,7 +3,7 @@ groups:
     rules:
       # Node Down
       - alert: Cảnh Báo Server
-        expr:  up{instance=~".+",job="k8s-bravoapp-node"} == 0
+        expr:  up{instance=~".+",job="k8s-bravoapp-node"} == 1
         for: 1m
         labels:
           severity: Khẩn cấp
@@ -79,7 +79,7 @@ groups:
 
       # Kuber API Server
       - alert: Cảnh Báo POD Kubeapi-server
-        expr: up{exported_job='kubernetes-apiservers',job='cluster-application-k8s'} == 1
+        expr: up{exported_job='kubernetes-apiservers',job='cluster-application-k8s'} == 0
         for: 1m
         labels:
           severity: Khẩn cấp
