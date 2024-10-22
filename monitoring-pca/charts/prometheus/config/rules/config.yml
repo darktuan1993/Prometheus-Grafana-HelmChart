@@ -5,7 +5,8 @@ global:
 
 # Rules config
 rule_files:
-  - "/etc/prometheus/rules/kubernetes.yml"
+  - "/etc/prometheus/rules/k8s-application.yml"
+  - "/etc/prometheus/rules/k8s-clustermanager.yml"
 
 alerting:
   alertmanagers:
