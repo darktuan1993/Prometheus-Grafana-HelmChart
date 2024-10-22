@@ -86,7 +86,7 @@ groups:
           severity: Khẩn cấp
           app_type: Cluster Application
           category: kubernetes
-          instance: "{{ $labels.instance }}"
+          instance: "{{ $labels.exported_job }}"
         annotations:
           summary: "Service giám sát hoặc server bị tắt trên máy chủ {{ $labels.instance }}"
           description: | 
