@@ -86,6 +86,6 @@ groups:
           app_type: Cluster Application
           category: kubernetes
         annotations:
-          summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.exported_instance }}"
+          summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.instance }}"
           description: | 
                 Vui lòng kiểm tra lại !            
