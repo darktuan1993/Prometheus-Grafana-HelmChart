@@ -72,3 +72,5 @@ groups:
 
               Thông Tin Cụ Thể:
                 * Dung lượng còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
+
+#################

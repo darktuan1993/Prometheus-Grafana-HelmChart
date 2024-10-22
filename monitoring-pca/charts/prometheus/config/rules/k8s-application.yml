@@ -15,7 +15,6 @@ groups:
           description: | 
                 Vui lòng kiểm tra lại !
 
-
       # Ram Rules
       - alert: Cảnh báo RAM
         expr: (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_MemFree_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Buffers_bytes{job="k8s-bravoapp-node", instance=~".+"} - node_memory_Cached_bytes{job="k8s-bravoapp-node", instance=~".+"} ) / (node_memory_MemTotal_bytes{job="k8s-bravoapp-node", instance=~".+"}) * 100 > 95
@@ -74,3 +73,19 @@ groups:
 
               Thông Tin Cụ Thể:
                 * Dung lượng còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-bravoapp-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
+
+
+########################
+
+      # Kuber API Server
+      - alert: Cảnh Báo POD Kubeapi-server
+        expr: up{exported_job='kubernetes-apiservers',job='cluster-application-k8s'} == 0
+        for: 1m
+        labels:
+          severity: Khẩn cấp
+          app_type: Cluster Application
+          category: Kubernetes
+        annotations:
+          summary: "Kuber-Apiserver bị tắt trên node master {{ $labels.exported_instance }}"
+          description: | 
+                Vui lòng kiểm tra lại !            
