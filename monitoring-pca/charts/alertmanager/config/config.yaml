@@ -21,7 +21,14 @@ route:
 ##################### SERVER-NODE EXPORTER #######################
     # ClusterManager
     - match:
-        app_type: ClusterManager
+        app_type: Cluster Manager
         category: server  
+      receiver: systems-team-telegram
+      group_wait: 10s
+
+##################### SERVER-NODE RAM #######################
+    - match:
+        app_type: Cluster Manager
+        category: memory  
       receiver: systems-team-telegram
       group_wait: 10s
