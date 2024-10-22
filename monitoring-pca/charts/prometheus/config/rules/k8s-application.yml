@@ -58,7 +58,7 @@ groups:
 
       # Disk Rules
       - alert: Cảnh Báo Phân Vùng Ổ Cứng
-        expr: (100 - ((node_filesystem_free_bytes{instance=~".+",job="k8s-bravoapp-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}) / (node_filesystem_size_bytes{instance=~".+",job="k8s-bravoapp-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}))* 100) > 14
+        expr: (100 - ((node_filesystem_free_bytes{instance=~".+",job="k8s-bravoapp-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}) / (node_filesystem_size_bytes{instance=~".+",job="k8s-bravoapp-node",mountpoint=~".+",fstype!~"tmpfs|aufs|overlay|vfat|ramfs"}))* 100) > 90
         for: 1m
         labels:
           severity: Khẩn cấp
