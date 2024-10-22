@@ -1,0 +1,19 @@
+groups:
+  - name: Rules
+    rules:
+      # Node Down
+      - alert: Cảnh Báo Server
+        expr:  up{instance=~".+",job="cluster-application-k8s"} == 0
+        for: 1m
+        labels:
+          severity: Khẩn cấp
+          app_type: Cluster Application
+          category: server
+          instance: "{{ $labels.instance }}"
+        annotations:
+          summary: "Service giám sát hoặc server bị tắt trên máy chủ {{ $labels.instance }}"
+          description: | 
+                Vui lòng kiểm tra lại !
+
+
+
