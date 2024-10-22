@@ -103,4 +103,4 @@ groups:
         annotations:
             summary: " Check pod not healthy ( {{ $labels.pod }}) "
             description: |
-               "Pod {{ $labels.namespace }}/{{ $labels.pod }}.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+               "Pod {{ $labels.namespace }}/{{ $labels.pod }}"
