@@ -28,6 +28,7 @@ groups:
         annotations:
           summary: "RAM Server > 95%"
           description: |
+            
             RAM đã sử dụng chiếm {{ printf "%.2f" $value }}% / 100%
 
             Thông Tin Cụ Thể:
