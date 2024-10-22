@@ -1,5 +1,5 @@
 {{if eq .Status "resolved"}}
-✅💙PHỤC HỒI💙✅
+✅💙RESOLVED💙✅
 ------------------------------------------------------
 Nội dung: {{.CommonAnnotations.summary}}
 Nhóm Cảnh báo: {{ .CommonLabels.alertname }}
@@ -7,7 +7,7 @@ Máy Chủ: {{ .CommonLabels.instance }}
 Status:  {{ .Status  | str_UpperCase}}
 ------------------------------------------------------
 {{- range $val := .Alerts }}
-Xử lý cảnh báo lúc: <code>{{ $val.StartsAt | str_FormatDate }}</code>
+RESOLVED SỰ CỐ: <code>{{ $val.StartsAt | str_FormatDate }}</code>
 {{- end -}}
 {{end -}}
 
@@ -25,6 +25,6 @@ Mức Độ:  <code> 🔥 {{ .CommonLabels.severity | str_UpperCase }} 🔥 </co
 
 ------------------------------------------------------
 {{- range $val := .Alerts }}
-THỜI GIAN: <code>{{ $val.StartsAt | str_FormatDate }}</code>
+THỜI GIAN XẢY RA: <code>{{ $val.StartsAt | str_FormatDate }}</code>
 {{- end -}}
 {{end }}
