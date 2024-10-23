@@ -92,7 +92,7 @@ groups:
           description: | 
                 Vui lòng kiểm tra lại !            
 
-      - alert: KubernetesPodNotHealthy
+      - alert: (POD)
         expr: kube_pod_status_phase{phase=~"Running", pod=~".+",job='k8s-bravoapp-node',namespace='istio-system'} == 1
         for: 1m
         labels:
@@ -101,6 +101,6 @@ groups:
           category: kubernetes
           instance: "{{ $labels.pod }}"
         annotations:
-            summary: " Check pod not healthy ( {{ $labels.pod }}) "
+            summary: " Pod dừng hoạt động ( {{ $labels.pod }}) "
             description: |
-               "Pod {{ $labels.namespace }}/{{ $labels.pod }}"
+               "Namespace:{{ $labels.namespace }}"
