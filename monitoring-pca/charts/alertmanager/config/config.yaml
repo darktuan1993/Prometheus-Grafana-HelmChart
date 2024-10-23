@@ -3,14 +3,18 @@ global:
 
 receivers:
 
-# Group Dự phòng
-- name: systems-team-telegram
+- name: system-kubernetes
   webhook_configs:
-  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local:9087/alert/-4570531790'
+  - url: 'http://bravo-monitoring-alertbot-k8s.bravo-monitoring.svc.cluster.local:9087/alert/-4570531790'
 
 - name: service-kubernetes
   webhook_configs:
   - url: 'http://bravo-monitoring-alertbot-k8s.bravo-monitoring.svc.cluster.local:9087/alert/-4579843366'
+
+# Group Dự phòng
+- name: systems-team-telegram
+  webhook_configs:
+  - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local:9087/alert/-4194274582'
 
 route:
   continue: false
@@ -26,25 +30,25 @@ route:
     - match:
         app_type: Cluster Manager
         category: server  
-      receiver: systems-team-telegram
+      receiver: system-kubernetes
       group_wait: 10s
     # RAM
     - match:
         app_type: Cluster Manager
         category: memory  
-      receiver: systems-team-telegram
+      receiver: system-kubernetes
       group_wait: 10s
     # DISK
     - match:
         app_type: Cluster Manager
         category: disk  
-      receiver: systems-team-telegram
+      receiver: system-kubernetes
       group_wait: 10s
     # CPU
     - match:
         app_type: Cluster Manager
         category: cpu  
-      receiver: systems-team-telegram
+      receiver: system-kubernetes
       group_wait: 10s
 ##################### KUBERNETES #######################
     - match:
