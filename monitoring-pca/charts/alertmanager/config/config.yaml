@@ -83,3 +83,9 @@ route:
         category: kubernetes  
       receiver: service-kubernetes
       group_wait: 10s
+
+    - match:
+        app_type: Cluster Manager
+        category: kubernetes  
+      receiver: service-kubernetes
+      group_wait: 10s

@@ -74,3 +74,17 @@ groups:
                 * Dung lượng còn lại:  {{ query (printf "node_filesystem_free_bytes{job='k8s-management-node', instance=~'%s', mountpoint=~'%s' ,fstype!~'tmpfs|aufs|overlay|vfat|ramfs'}" $labels.instance $labels.mountpoint) | first | value | humanize1024}}
 
 #################
+
+      # Kuber API Server
+      - alert: (POD) KubeAPI-Server
+        expr: up{exported_job="kubernetes-apiservers",job="cluster-manager-k8s",instance=~".+"} == 1
+        for: 1m
+        labels:
+          severity: Khẩn cấp
+          app_type: Cluster Manager
+          category: kubernetes
+          instance: "{{ $labels.exported_instance }}"
+        annotations:
+          summary: "Service Kubeapi-server {{ $labels.exported_instance }} bị tắt"
+          description: | 
+                Vui lòng kiểm tra lại !     
