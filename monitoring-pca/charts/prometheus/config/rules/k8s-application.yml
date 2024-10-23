@@ -103,4 +103,5 @@ groups:
         annotations:
             summary: " Pod dừng hoạt động ( {{ $labels.pod }}) "
             description: |
-               "Namespace: {{ $labels.namespace }} / POD: {{ $labels.pod }}"
+               "Namespace: {{ $labels.namespace }} 
+                POD: {{ $labels.pod }}"
