@@ -8,6 +8,9 @@ receivers:
   webhook_configs:
   - url: 'http://bravo-monitoring-alertbot.bravo-monitoring.svc.cluster.local:9087/alert/-4570531790'
 
+- name: cluster-kubernetes
+  webhook_configs:
+  - url: 'http://bravo-monitoring-alertbot2.bravo-monitoring.svc.cluster.local:9087/alert/-4579843366'
 
 route:
   continue: false
@@ -47,5 +50,5 @@ route:
     - match:
         app_type: Cluster Manager
         category: kubernetes  
-      receiver: systems-team-telegram
+      receiver: cluster-kubernetes
       group_wait: 10s
