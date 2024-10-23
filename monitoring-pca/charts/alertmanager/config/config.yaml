@@ -50,6 +50,33 @@ route:
         category: cpu  
       receiver: system-kubernetes
       group_wait: 10s
+
+#######
+    # Node
+    - match:
+        app_type: Cluster Application
+        category: server  
+      receiver: system-kubernetes
+      group_wait: 10s
+    # RAM
+    - match:
+        app_type: Cluster Application
+        category: memory  
+      receiver: system-kubernetes
+      group_wait: 10s
+    # DISK
+    - match:
+        app_type: Cluster Application
+        category: disk  
+      receiver: system-kubernetes
+      group_wait: 10s
+    # CPU
+    - match:
+        app_type: Cluster Application
+        category: cpu  
+      receiver: system-kubernetes
+      group_wait: 10s
+
 ##################### KUBERNETES #######################
     - match:
         app_type: Cluster Application
