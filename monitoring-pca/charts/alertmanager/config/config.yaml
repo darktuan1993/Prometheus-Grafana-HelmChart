@@ -10,7 +10,7 @@ receivers:
 
 - name: cluster-kubernetes
   webhook_configs:
-  - url: 'http://bravo-monitoring-alertbot2.bravo-monitoring.svc.cluster.local:9087/alert/-4579843366'
+  - url: 'http://bravo-monitoring-alertbot-k8s.bravo-monitoring.svc.cluster.local:9087/alert/-4579843366'
 
 route:
   continue: false
