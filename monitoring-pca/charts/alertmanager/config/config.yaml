@@ -52,7 +52,7 @@ route:
       group_wait: 10s
 ##################### KUBERNETES #######################
     - match:
-        app_type: Cluster Manager
+        app_type: Cluster Application
         category: kubernetes  
       receiver: service-kubernetes
       group_wait: 10s
